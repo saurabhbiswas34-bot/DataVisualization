@@ -7,6 +7,7 @@ import { useGame } from '../hooks/useGame';
 import { formatDateTime } from '../utils/timeUtils';
 import { nanosToUSD } from '../utils/priceCalc';
 import { useIotaPrice } from '../hooks/useIotaPrice';
+import { ACTIVE_NETWORK } from '../networkConfig';
 
 export default function ResultsPage() {
   const { gameId } = useParams<{ gameId: string }>();
@@ -51,7 +52,7 @@ export default function ResultsPage() {
             ← Back to Home
           </Link>
           <a
-            href={`https://explorer.iota.org/object/${game.objectId}?network=testnet`}
+            href={`https://explorer.iota.org/object/${game.objectId}?network=${ACTIVE_NETWORK}`}
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 bg-teal-500/20 text-teal-400 hover:bg-teal-500/30 rounded-lg transition-colors text-sm border border-teal-500/30"

@@ -75,12 +75,22 @@ export default function CreateGameForm() {
         </div>
 
         <div className="bg-gray-800/50 rounded-lg p-3 space-y-1 text-sm">
-          <p className="text-gray-400 font-medium mb-2">Prize Distribution</p>
-          <div className="flex justify-between"><span className="text-gray-400">🥇 1st Winner</span><span className="text-amber-400 font-medium">50%</span></div>
-          <div className="flex justify-between"><span className="text-gray-400">🥈 2nd Winner</span><span className="text-gray-300">30%</span></div>
-          <div className="flex justify-between"><span className="text-gray-400">🥉 3rd Winner</span><span className="text-orange-400">10%</span></div>
-          <div className="flex justify-between border-t border-gray-700 pt-1"><span className="text-gray-500">🏦 Treasury (Admin)</span><span className="text-gray-500">10%</span></div>
-          <p className="text-gray-600 text-xs mt-1">Gas fee for reveal deducted from treasury 10%</p>
+          <p className="text-gray-400 font-medium mb-2">Prize Distribution (on-chain)</p>
+          <div className="grid grid-cols-4 gap-1 text-xs text-gray-500 mb-1 font-medium">
+            <span></span><span className="text-center">1 player</span><span className="text-center">2 players</span><span className="text-center">3+ players</span>
+          </div>
+          <div className="grid grid-cols-4 gap-1 text-xs">
+            <span className="text-gray-400">🥇 1st</span><span className="text-amber-400 text-center">90%</span><span className="text-amber-400 text-center">50%</span><span className="text-amber-400 text-center">50%</span>
+          </div>
+          <div className="grid grid-cols-4 gap-1 text-xs">
+            <span className="text-gray-400">🥈 2nd</span><span className="text-gray-600 text-center">—</span><span className="text-gray-300 text-center">40%</span><span className="text-gray-300 text-center">30%</span>
+          </div>
+          <div className="grid grid-cols-4 gap-1 text-xs">
+            <span className="text-gray-400">🥉 3rd</span><span className="text-gray-600 text-center">—</span><span className="text-gray-600 text-center">—</span><span className="text-orange-400 text-center">10%</span>
+          </div>
+          <div className="grid grid-cols-4 gap-1 text-xs border-t border-gray-700 pt-1 mt-1">
+            <span className="text-gray-500">🏦 Treasury</span><span className="text-gray-500 text-center">10%</span><span className="text-gray-500 text-center">~10%</span><span className="text-gray-500 text-center">~10%</span>
+          </div>
         </div>
 
         {status !== 'idle' && (

@@ -58,14 +58,18 @@ describe('CreateGameForm', () => {
     expect(btn).toBeDisabled();
   });
 
-  it('shows prize distribution breakdown', () => {
+  it('shows prize distribution breakdown with all three tiers', () => {
     mockIotaClientQuery.mockReturnValue({
       data: { data: [{ data: { objectId: ADMIN_CAP_ID } }] },
     });
     render(<CreateGameForm />, { wrapper: Wrapper });
-    expect(screen.getByText('Prize Distribution')).toBeInTheDocument();
-    // Check that 50% appears in the prize breakdown
-    expect(screen.getByText('50%')).toBeInTheDocument();
+    expect(screen.getByText(/Prize Distribution/i)).toBeInTheDocument();
+    // All three player-count tiers should be visible
+    expect(screen.getByText('1 player')).toBeInTheDocument();
+    expect(screen.getByText('2 players')).toBeInTheDocument();
+    expect(screen.getByText('3+ players')).toBeInTheDocument();
+    // 1-player: 90% to winner
+    expect(screen.getByText('90%')).toBeInTheDocument();
   });
 
   it('shows Reveal Date & Time label', () => {

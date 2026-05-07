@@ -12,11 +12,21 @@ export function useActiveGames() {
     queryFn: async (): Promise<ParsedGame[]> => {
       if (!packageId || packageId === '0xTODO') return [];
       try {
-        const events = await client.queryEvents({
-          query: { MoveEventType: `${packageId}::events::GameCreated` },
-          limit: 50,
-        });
-        const objectIds = events.data
+        // Paginate through ALL GameCreated events — a hard limit of 50 silently
+        // drops older games from every page, history, and treasury rollup.
+        const allEvents: any[] = [];
+        let cursor: any = undefined;
+        do {
+          const page: any = await client.queryEvents({
+            query: { MoveEventType: `${packageId}::events::GameCreated` },
+            limit: 50,
+            cursor,
+          });
+          allEvents.push(...page.data);
+          cursor = page.hasNextPage ? page.nextCursor : null;
+        } while (cursor);
+
+        const objectIds = allEvents
           .map((e: any) => e.parsedJson?.game_object_id)
           .filter(Boolean);
 
