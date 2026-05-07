@@ -5,7 +5,15 @@ function parseGameObject(obj: unknown): ParsedGame | null {
   try {
     const f = (obj as any)?.data?.content?.fields;
     if (!f) return null;
-    const optVal = (opt: unknown) => (opt as any)?.fields?.vec?.[0] ?? null;
+    // IOTA RPC serializes Move Option<T> as:
+    //   Some(v) → plain value (string/address)  on newer node versions
+    //   Some(v) → {fields:{vec:[v]}}             on older serialization
+    //   None    → null
+    const optVal = (opt: unknown): string | null => {
+      if (opt === null || opt === undefined) return null;
+      if (typeof opt === 'string') return opt;
+      return (opt as any)?.fields?.vec?.[0] ?? null;
+    };
     return {
       objectId: (obj as any).data.objectId,
       gameId: parseInt(f.game_id),

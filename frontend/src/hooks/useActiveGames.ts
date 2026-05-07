@@ -42,7 +42,11 @@ export function useActiveGames() {
         for (const obj of objects) {
           const f = (obj as any)?.data?.content?.fields;
           if (!f) continue;
-          const optVal = (opt: unknown) => (opt as any)?.fields?.vec?.[0] ?? null;
+          const optVal = (opt: unknown): string | null => {
+            if (opt === null || opt === undefined) return null;
+            if (typeof opt === 'string') return opt;
+            return (opt as any)?.fields?.vec?.[0] ?? null;
+          };
           try {
             parsed.push({
               objectId: (obj as any).data.objectId,
