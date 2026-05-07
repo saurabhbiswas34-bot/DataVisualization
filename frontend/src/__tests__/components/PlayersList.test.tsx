@@ -33,9 +33,9 @@ describe('PlayersList', () => {
     expect(screen.getByText('Address')).toBeInTheDocument();
   });
 
-  it('shows ticket column header', () => {
+  it('shows draw slot column header', () => {
     const game = makeGame({ players: [PLAYER_A] });
     render(<PlayersList game={game} />, { wrapper: Wrapper });
-    expect(screen.getByText('Ticket')).toBeInTheDocument();
+    expect(screen.getByText('Draw Slot')).toBeInTheDocument();
   });
 });

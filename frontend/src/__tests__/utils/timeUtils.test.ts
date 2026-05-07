@@ -64,10 +64,11 @@ describe('getGameStatus', () => {
     expect(getGameStatus(game)).toBe('history');
   });
 
-  it('returns "history" when revealedAtMs is null/0 (treats as epoch)', () => {
-    // When revealedAtMs is null → 0, Date.now() >> 0 + HISTORY_THRESHOLD_MS
+  it('returns "revealed" when revealedAtMs is null (missing field treated as recent)', () => {
+    // A missing revealedAtMs should NOT default to epoch-0 (which would make
+    // every such game immediately "history"). Treat as "revealed" instead.
     const game = makeGame({ isActive: false, revealedAtMs: null });
-    expect(getGameStatus(game)).toBe('history');
+    expect(getGameStatus(game)).toBe('revealed');
   });
 });
 

@@ -22,7 +22,7 @@ async function fetchPrice(): Promise<number> {
 }
 
 export function useIotaPrice() {
-  const { data: priceUSD, isLoading, error } = useQuery({
+  const { data: priceUSD, isLoading, error, dataUpdatedAt } = useQuery({
     queryKey: ['iota-price'],
     queryFn: fetchPrice,
     refetchInterval: 60_000,
@@ -38,6 +38,8 @@ export function useIotaPrice() {
     minEntryIOTA,
     isLoading,
     error: error ? String(error) : null,
-    lastUpdated: new Date(),
+    // dataUpdatedAt is the epoch ms when the last successful fetch completed,
+    // not the current render time (which was always wrong before).
+    lastUpdated: new Date(dataUpdatedAt),
   };
 }

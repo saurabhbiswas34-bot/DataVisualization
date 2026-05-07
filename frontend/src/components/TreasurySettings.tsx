@@ -15,6 +15,7 @@ export default function TreasurySettings({ currentTreasury }: { currentTreasury:
     filter: { StructType: `${packageId}::matka_pot::AdminCap` },
     options: { showContent: true },
   }, { enabled: !!account?.address && isAdmin && packageId !== '0xTODO' });
+  // A deployment produces exactly one AdminCap; [0] is safe for standard setups.
   const adminCapId = ownedObjects?.data?.[0]?.data?.objectId ?? '';
 
   const [newAddress, setNewAddress] = useState('');

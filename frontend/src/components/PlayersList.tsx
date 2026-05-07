@@ -14,7 +14,7 @@ export default function PlayersList({ game }: { game: ParsedGame }) {
     <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
       <div className="px-4 py-3 border-b border-gray-800 flex justify-between items-center">
         <h3 className="text-white font-semibold">Players ({playerCount} unique)</h3>
-        <span className="text-gray-500 text-xs">1 ticket each · equal draw chance</span>
+        <span className="text-gray-500 text-xs">1 draw slot per address · equal chance regardless of amount</span>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
@@ -23,7 +23,7 @@ export default function PlayersList({ game }: { game: ParsedGame }) {
               <th className="text-left px-4 py-2">#</th>
               <th className="text-left px-4 py-2">Address</th>
               <th className="text-right px-4 py-2">Contributed</th>
-              <th className="text-center px-4 py-2">Ticket</th>
+              <th className="text-center px-4 py-2">Draw Slot</th>
             </tr>
           </thead>
           <tbody>
@@ -43,7 +43,7 @@ export default function PlayersList({ game }: { game: ParsedGame }) {
         </table>
       </div>
       <div className="px-4 py-2 bg-gray-800/30 text-gray-500 text-xs text-center">
-        Each unique address receives exactly 1 draw ticket regardless of contribution amount
+        Each unique address receives exactly 1 draw slot regardless of contribution amount — additional contributions increase the pot, not the odds
       </div>
     </div>
   );

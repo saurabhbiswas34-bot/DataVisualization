@@ -43,7 +43,7 @@ export default function ResultsPage() {
             Total Pot: <span className="text-white font-semibold">{game.potIOTA.toFixed(4)} IOTA</span>{' '}
             <span className="text-gray-500">(${potUSD.toFixed(2)} USD)</span>
           </p>
-          <p className="text-gray-500 text-sm">{game.players.length} unique players · verifiable on-chain randomness</p>
+          <p className="text-gray-500 text-sm">{game.players.length} unique players · draw via IOTA <code>Random</code> object</p>
         </div>
         <WinnersBoard game={game} />
         <AllEntriesTable game={game} />

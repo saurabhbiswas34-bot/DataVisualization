@@ -19,7 +19,7 @@ export default function AllEntriesTable({ game }: { game: ParsedGame }) {
             <tr className="text-gray-500 text-xs border-b border-gray-800">
               <th className="text-left px-4 py-2">#</th>
               <th className="text-left px-4 py-2">Wallet Address</th>
-              <th className="text-center px-4 py-2">Draw Ticket</th>
+              <th className="text-center px-4 py-2">Draw Slot</th>
               <th className="text-center px-4 py-2">Result</th>
             </tr>
           </thead>
@@ -29,7 +29,7 @@ export default function AllEntriesTable({ game }: { game: ParsedGame }) {
                 <td className="px-4 py-2.5 text-gray-400">{i + 1}</td>
                 <td className="px-4 py-2.5 font-mono text-teal-400">{formatAddress(addr)}</td>
                 <td className="px-4 py-2.5 text-center">
-                  <span className="bg-amber-400/10 text-amber-400 text-xs px-2 py-0.5 rounded-full">🎫 1</span>
+                  <span className="bg-amber-400/10 text-amber-400 text-xs px-2 py-0.5 rounded-full" title="1 draw slot per unique address regardless of contribution amount">🎫 1</span>
                 </td>
                 <td className="px-4 py-2.5 text-center">
                   {winnerMap[addr]

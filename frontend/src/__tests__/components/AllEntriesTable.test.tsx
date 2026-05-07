@@ -48,7 +48,7 @@ describe('AllEntriesTable', () => {
     render(<AllEntriesTable game={makeRevealedGame()} />, { wrapper: Wrapper });
     expect(screen.getByText('#')).toBeInTheDocument();
     expect(screen.getByText('Wallet Address')).toBeInTheDocument();
-    expect(screen.getByText('Draw Ticket')).toBeInTheDocument();
+    expect(screen.getByText('Draw Slot')).toBeInTheDocument();
     expect(screen.getByText('Result')).toBeInTheDocument();
   });
 });

@@ -16,6 +16,9 @@ export default function CreateGameForm() {
     filter: { StructType: `${packageId}::matka_pot::AdminCap` },
     options: { showContent: true },
   }, { enabled: !!account?.address && isAdmin && packageId !== '0xTODO' });
+  // A deployment produces exactly one AdminCap. Taking [0] is safe for standard
+  // setups; if multiple caps ever exist (e.g. accidental re-deploy), the first
+  // returned by the RPC is used — no selection UI is provided.
   const adminCapId = ownedObjects?.data?.[0]?.data?.objectId ?? '';
 
   const [revealDate, setRevealDate] = useState('');

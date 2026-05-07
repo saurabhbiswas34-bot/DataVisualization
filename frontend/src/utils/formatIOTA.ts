@@ -6,7 +6,11 @@ export function nanosToIOTA(nanos: bigint | string | number): number {
 }
 
 export function iotaToNanos(iota: number): bigint {
-  return BigInt(Math.ceil(iota * Number(NANOS_PER_IOTA)));
+  // Avoid float × 1e9 rounding errors (e.g. 1.1 * 1e9 = 1099999999.9999998).
+  // toFixed(9) produces an exact 9-decimal string which we split into whole
+  // nanos without any floating-point intermediate.
+  const [whole, frac = ''] = iota.toFixed(9).split('.');
+  return BigInt(whole) * NANOS_PER_IOTA + BigInt(frac.padEnd(9, '0').slice(0, 9));
 }
 
 export function formatIOTA(nanos: bigint | string | number, decimals = 4): string {

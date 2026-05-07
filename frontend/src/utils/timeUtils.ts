@@ -12,8 +12,11 @@ export function msToCountdown(ms: number): string {
 
 export function getGameStatus(game: ParsedGame): 'open' | 'locked' | 'revealed' | 'history' {
   if (!game.isActive) {
-    const revealedAt = game.revealedAtMs ?? 0;
-    if (Date.now() > revealedAt + HISTORY_THRESHOLD_MS) return 'history';
+    // Defaulting a missing revealedAtMs to 0 would place every such game at
+    // epoch-0, making Date.now() > HISTORY_THRESHOLD_MS always true and
+    // instantly classifying the game as 'history'.  Treat missing as 'revealed'.
+    if (game.revealedAtMs === null) return 'revealed';
+    if (Date.now() > game.revealedAtMs + HISTORY_THRESHOLD_MS) return 'history';
     return 'revealed';
   }
   if (Date.now() >= game.lockoutTimestampMs) return 'locked';
