@@ -347,7 +347,7 @@ These were NOT in scope for the initial build but noted during discussion:
 
 ## 15. Current Project Status
 
-As of the time this file was written:
+Updated after final integration pass (all waves complete):
 
 ```
 ✅ COMPLETE: Full design documentation (HLD, LLD, Security, Persistence, Deployment)
@@ -356,14 +356,17 @@ As of the time this file was written:
 ✅ COMPLETE: Deployment guide (Vercel + IOTA Testnet)
 ✅ COMPLETE: Skills reference
 ✅ COMPLETE: This context file
+✅ COMPLETE: Smart contract code (Move) — deployed to IOTA Testnet
+✅ COMPLETE: Frontend code — React + TypeScript, pnpm build passing
+✅ COMPLETE: Move unit tests (12/12 passing)
+✅ COMPLETE: Testnet deploy — Package ID: 0xf936757d547629b4c8c22a9a36c823de7799c6496a2910a1c11e3af8b0ee171a
+✅ COMPLETE: Frontend integration — all 6 routes, all components
+✅ COMPLETE: Real IDs wired into frontend (no 0xTODO placeholders)
+✅ COMPLETE: Vercel config (vercel.json) ready for deploy
 
-🔲 PENDING: Smart contract code (Agent 1)
-🔲 PENDING: Frontend code (Agents 2, 3, 4)
-🔲 PENDING: Move unit tests (Agent 5)
-🔲 PENDING: Testnet deploy (Agent 5)
-🔲 PENDING: Frontend integration (Agent 6)
-🔲 PENDING: Testnet wiring + smoke test (Agent 7)
-🔲 PENDING: Vercel production deploy
+🔲 PENDING: Vercel production deploy (run: cd frontend && vercel --prod)
+🔲 PENDING: Connect admin wallet and create first real game on testnet
+🔲 PENDING: End-to-end manual test with 3 wallets
 ```
 
-**Next action: Spawn Wave 1 agents (say "go") to begin coding.**
+**All development waves complete. Contract is live on IOTA Testnet.**

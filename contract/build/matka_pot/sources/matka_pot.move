@@ -319,4 +319,35 @@ module matka_pot::matka_pot {
         events::emit_min_contribution_updated(config.min_contribution_nanos, new_min);
         config.min_contribution_nanos = new_min;
     }
+
+    #[test_only]
+    public fun init_for_testing(ctx: &mut TxContext) {
+        init(ctx);
+    }
+
+    #[test_only]
+    public fun reveal_winners_for_testing(
+        game: &mut Game,
+        rand: &random::Random,
+        clock: &Clock,
+        config: &GlobalConfig,
+        ctx: &mut TxContext,
+    ) {
+        reveal_winners(game, rand, clock, config, ctx)
+    }
+
+    #[test_only]
+    public fun get_unique_player_count(game: &Game): u64 {
+        vec_set::size(&game.entries)
+    }
+
+    #[test_only]
+    public fun get_pot_balance(game: &Game): u64 {
+        balance::value(&game.pot_balance)
+    }
+
+    #[test_only]
+    public fun is_game_active(game: &Game): bool {
+        game.is_active
+    }
 }

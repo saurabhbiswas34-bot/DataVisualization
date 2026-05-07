@@ -5,15 +5,15 @@ compiled_package_info:
     iota: "0000000000000000000000000000000000000000000000000000000000000002"
     matka_pot: "0000000000000000000000000000000000000000000000000000000000000000"
     std: "0000000000000000000000000000000000000000000000000000000000000001"
-  source_digest: E0E2CC43E1A3AE5A66353D4055B15BFA8E610B48402828AA4A2D7F4E20B53919
+  source_digest: 3E01D33F03B269FA166998E69E026C5AF6306419D4B7B1855191A5FF531A75FA
   build_flags:
-    dev_mode: false
-    test_mode: false
+    dev_mode: true
+    test_mode: true
     generate_docs: false
     save_disassembly: false
     install_dir: ~
     force_recompilation: false
-    lock_file: "./Move.lock"
+    lock_file: ~
     fetch_deps_only: false
     skip_fetch_latest_git_deps: false
     default_flavor: iota
