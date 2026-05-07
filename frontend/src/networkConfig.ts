@@ -6,17 +6,17 @@ const { networkConfig, useNetworkVariable, useNetworkVariables } =
     testnet: {
       url: import.meta.env.VITE_IOTA_FULLNODE_URL || getFullnodeUrl('testnet'),
       variables: {
-        packageId: import.meta.env.VITE_PACKAGE_ID || '0xTODO',
-        globalConfigId: import.meta.env.VITE_GLOBAL_CONFIG_ID || '0xTODO',
-        adminAddress: import.meta.env.VITE_ADMIN_ADDRESS || '0xTODO',
+        packageId: import.meta.env.VITE_PACKAGE_ID || '0xf936757d547629b4c8c22a9a36c823de7799c6496a2910a1c11e3af8b0ee171a',
+        globalConfigId: import.meta.env.VITE_GLOBAL_CONFIG_ID || '0x62fe4b0e6d1a745281632d08a810182b839bb69e45bf94bba108de04fc2878e3',
+        adminAddress: import.meta.env.VITE_ADMIN_ADDRESS || '0xe21283aba70e849dbd223d40e3fb6e71899af96afec60aa2ea09578aabfe6d38',
       },
     },
     mainnet: {
       url: import.meta.env.VITE_IOTA_FULLNODE_URL || getFullnodeUrl('mainnet'),
       variables: {
-        packageId: import.meta.env.VITE_PACKAGE_ID || '0xTODO',
-        globalConfigId: import.meta.env.VITE_GLOBAL_CONFIG_ID || '0xTODO',
-        adminAddress: import.meta.env.VITE_ADMIN_ADDRESS || '0xTODO',
+        packageId: import.meta.env.VITE_PACKAGE_ID || '0xf936757d547629b4c8c22a9a36c823de7799c6496a2910a1c11e3af8b0ee171a',
+        globalConfigId: import.meta.env.VITE_GLOBAL_CONFIG_ID || '0x62fe4b0e6d1a745281632d08a810182b839bb69e45bf94bba108de04fc2878e3',
+        adminAddress: import.meta.env.VITE_ADMIN_ADDRESS || '0xe21283aba70e849dbd223d40e3fb6e71899af96afec60aa2ea09578aabfe6d38',
       },
     },
   });
