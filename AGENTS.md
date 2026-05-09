@@ -9,6 +9,10 @@ IOTA Matka Pot is a decentralized lottery dApp built on the IOTA L1 blockchain. 
 - **Frontend** (`frontend/`): React 18 + TypeScript SPA served by Vite. Uses `@iota/dapp-kit` and `@iota/iota-sdk` for blockchain interactions.
 - **Smart Contract** (`contract/`): IOTA Move smart contract (already deployed to testnet). Contract tests require the `iota` CLI which is not installed in the cloud environment.
 
+### Cloud agent environment (`install` / update script)
+
+Cursor Cloud runs the `install` field from `.cursor/environment.json` at the **repository root** on each VM start (this is the “update script”). This repo keeps Node dependencies under `frontend/` only, so the configured script copies the committed testnet env template when `.env.local` is missing, then runs `pnpm install` in `frontend/`. Without this, a default root `npm install` fails because there is no root `package.json`.
+
 ### Running the Frontend
 
 ```bash

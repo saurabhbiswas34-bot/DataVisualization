@@ -1,0 +1,3 @@
+{
+  "install": "test -f frontend/.env.local || cp frontend/.env.testnet frontend/.env.local; cd frontend && pnpm install"
+}
